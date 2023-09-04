@@ -13090,10 +13090,422 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Introduction-to-Data-Science"><a href="http://datascience-intro.github.io/1MS041-2023/">Introduction to Data Science</a><a class="anchor-link" href="#Introduction-to-Data-Science">&#182;</a></h1><h2 id="1MS041,-2023">1MS041, 2023<a class="anchor-link" href="#1MS041,-2023">&#182;</a></h2><p>&copy;2023 Raazesh Sainudiin, Benny Avelin. <a href="https://creativecommons.org/licenses/by/4.0/">Attribution 4.0 International     (CC BY 4.0)</a></p>
+<h1 id="Assignment-1-for-Course-1MS041">Assignment 1 for Course 1MS041<a class="anchor-link" href="#Assignment-1-for-Course-1MS041">&#182;</a></h1><p>Make         sure you pass the <code># ... Test</code> cells and
+ submit your solution notebook in the corresponding assignment on the course website. You can submit multiple times before the deadline         and your highest score will be used.</p>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h2 id="Assignment-1,-PROBLEM-1">Assignment 1, PROBLEM 1<a class="anchor-link" href="#Assignment-1,-PROBLEM-1">&#182;</a></h2><p>Maximum Points = 3</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Given that you are being introduced to data science it is important to bear in mind the true costs of AI, a highly predictive family of algorithms used in data engineering sciences:</p>
+<p>Read the 16 pages of <a href="http://www.anatomyof.ai/img/ai-anatomy-publication.pdf">ai-anatomy-publication.pdf</a> with the highly detailed <a href="https://anatomyof.ai/img/ai-anatomy-map.pdf">ai-anatomy-map.pdf</a> of <a href="https://anatomyof.ai/">https://anatomyof.ai/</a>, "Anatomy of an AI System" By Kate Crawford and Vladan Joler (2018).  The first problem in ASSIGNMENT 1 is a trivial test of your reading comprehension.</p>
+<p>Answer whether each of the following statements is <code>True</code> or <code>False</code> <em>according to the authors</em> by appropriately replacing <code>Xxxxx</code> coresponding to <code>TruthValueOfStatement0a</code>, <code>TruthValueOfStatement0b</code> and <code>TruthValueOfStatement0c</code>, respectively, in the next cell to demonstrate your reading comprehension.</p>
+<ol>
+<li><code>Statement0a =</code> <em>Each small moment of convenience (provided by Amazon's Echo) – be it answering a question, turning on a light, or playing a song – requires a vast planetary network, fueled by the extraction of non-renewable materials, labor, and data.</em></li>
+<li><code>Statement0b =</code> <em>The Echo user is simultaneously a consumer, a resource, a worker, and a product</em> </li>
+<li><code>Statement0c =</code> <em>Many of the assumptions about human life made by machine learning systems are narrow, normative and laden with error. Yet they are inscribing and building those assumptions into a new world, and will increasingly play a role in how opportunities, wealth, and knowledge are distributed.</em></li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Replace Xxxxx with True or False; Don&#39;t modify anything else in this cell!</span>
+
+<span class="n">TruthValueOfStatement0a</span> <span class="o">=</span> <span class="n">Xxxxx</span>
+
+<span class="n">TruthValueOfStatement0b</span> <span class="o">=</span> <span class="n">Xxxxx</span>
+
+<span class="n">TruthValueOfStatement0c</span> <span class="o">=</span> <span class="n">Xxxxx</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h4 id="Local-Test-for-Assignment-1,-PROBLEM-1">Local Test for Assignment 1, PROBLEM 1<a class="anchor-link" href="#Local-Test-for-Assignment-1,-PROBLEM-1">&#182;</a></h4><p>Evaluate cell below to make sure your answer is valid.                             You <strong>should not</strong> modify anything in the cell below when evaluating it to do a local test of                             your solution.
+You may need to include and evaluate code snippets from lecture notebooks in cells above to make the local test work correctly sometimes (see error messages for clues). This is meant to help you become efficient at recalling materials covered in lectures that relate to this problem. Such local tests will generally not be available in the exam.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Test locally to ensure an acceptable answer, True or False</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">assert</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">TruthValueOfStatement0a</span><span class="p">,</span> <span class="nb">bool</span><span class="p">))</span> 
+    <span class="k">assert</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">TruthValueOfStatement0b</span><span class="p">,</span> <span class="nb">bool</span><span class="p">))</span> 
+    <span class="k">assert</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">TruthValueOfStatement0c</span><span class="p">,</span> <span class="nb">bool</span><span class="p">))</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Try again. You are not writing True or False for your answers.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Good, you have answered either True or False. Hopefully they are the correct answers!&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h2 id="Assignment-1,-PROBLEM-2">Assignment 1, PROBLEM 2<a class="anchor-link" href="#Assignment-1,-PROBLEM-2">&#182;</a></h2><p>Maximum Points = 2</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Evaluate the following cells by replacing <code>X</code> with the right command-line option to <code>head</code> in order to find the first four lines of the csv file <code>data/final.csv</code></p>
+
+<pre><code>%%sh
+man head
+
+HEAD(1)                   BSD General Commands Manual                  HEAD(1)
+
+NAME
+     head -- display first lines of a file
+
+SYNOPSIS
+     head [-n count | -c bytes] [file ...]
+
+DESCRIPTION
+     This filter displays the first count lines or bytes of each of the speci-
+     fied files, or of the standard input if no files are specified.  If count
+     is omitted it defaults to 10.
+
+     If more than a single file is specified, each file is preceded by a
+     header consisting of the string ``==&gt; XXX &lt;=='' where ``XXX'' is the name
+     of the file.
+
+EXIT STATUS
+     The head utility exits 0 on success, and &gt;0 if an error occurs.
+
+SEE ALSO
+     tail(1)
+
+HISTORY
+     The head command appeared in PWB UNIX.
+
+BSD                              June 6, 1993                              BSD</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%sh
+head -X data/final.csv
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">line_1_final</span> <span class="o">=</span> <span class="s2">&quot;XXX&quot;</span>
+<span class="n">line_2_final</span> <span class="o">=</span> <span class="s2">&quot;XXX&quot;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h4 id="Local-Test-for-Assignment-1,-PROBLEM-2">Local Test for Assignment 1, PROBLEM 2<a class="anchor-link" href="#Local-Test-for-Assignment-1,-PROBLEM-2">&#182;</a></h4><p>Evaluate cell below to make sure your answer is valid.                             You <strong>should not</strong> modify anything in the cell below when evaluating it to do a local test of                             your solution.
+You may need to include and evaluate code snippets from lecture notebooks in cells above to make the local test work correctly sometimes (see error messages for clues). This is meant to help you become efficient at recalling materials covered in lectures that relate to this problem. Such local tests will generally not be available in the exam.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Evaluate this cell locally to make sure you have the answer as a string</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">line_1_final</span><span class="p">)</span> <span class="o">==</span> <span class="nb">str</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Good! You have answered as a string for line 1. Hopefully it is the correct!&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">AssertionError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Try Again. You should answer with a string.&quot;</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">line_2_final</span><span class="p">)</span> <span class="o">==</span> <span class="nb">str</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Good! You have answered as a string for line 2. Hopefully it is the correct!&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">AssertionError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Try Again. You should answer with a string.&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h2 id="Assignment-1,-PROBLEM-3">Assignment 1, PROBLEM 3<a class="anchor-link" href="#Assignment-1,-PROBLEM-3">&#182;</a></h2><p>Maximum Points = 3</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In this assignment the goal is to parse the <code>final.csv</code> file from the previous problem.</p>
+<ol>
+<li>Read the file <code>data/final.csv</code> and parse it using the <code>csv</code> package and store the result as follows</li>
+</ol>
+<p>the <code>header</code> variable contains a list of names all as strings</p>
+<p>the <code>data</code> variable should be a list of lists containing all the rows of the csv file</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">header</span> <span class="o">=</span> <span class="n">XXX</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">XXX</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h4 id="Local-Test-for-Assignment-1,-PROBLEM-3">Local Test for Assignment 1, PROBLEM 3<a class="anchor-link" href="#Local-Test-for-Assignment-1,-PROBLEM-3">&#182;</a></h4><p>Evaluate cell below to make sure your answer is valid.                             You <strong>should not</strong> modify anything in the cell below when evaluating it to do a local test of                             your solution.
+You may need to include and evaluate code snippets from lecture notebooks in cells above to make the local test work correctly sometimes (see error messages for clues). This is meant to help you become efficient at recalling materials covered in lectures that relate to this problem. Such local tests will generally not be available in the exam.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Evaluate this cell locally to make sure you have the answer in the right format</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">header</span><span class="p">)</span> <span class="o">==</span> <span class="nb">list</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Good! You have the header as a list. Hopefully it is the correct!&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">AssertionError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Try Again. You should answer with a list.&quot;</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">types</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">header</span><span class="p">])</span>
+    <span class="k">assert</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">types</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">types</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="nb">str</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Good! You have the header as a list of strings. Hopefully it is the correct!&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">AssertionError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Try Again. You should answer with a list of strings.&quot;</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">==</span> <span class="nb">list</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Good! You have the data as a list. Hopefully it is the correct!&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">AssertionError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Try Again. You should answer with a list.&quot;</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">types</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">data</span><span class="p">])</span>
+    <span class="k">assert</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">types</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">types</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="nb">list</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Good! You have the data as a list of lists. Hopefully it is the correct!&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">AssertionError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Try Again. You should answer with a list of lists.&quot;</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">types</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">sum</span><span class="p">([[</span><span class="nb">type</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">t</span><span class="p">]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[:</span><span class="mi">1</span><span class="p">]],[]))</span>
+    <span class="k">assert</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">types</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">types</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="nb">str</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Good! You have the data as a list of lists of strings. Hopefully it is the correct!&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">AssertionError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Try Again. You should answer with a list of lists of strings.&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h2 id="Assignment-1,-PROBLEM-4">Assignment 1, PROBLEM 4<a class="anchor-link" href="#Assignment-1,-PROBLEM-4">&#182;</a></h2><p>Maximum Points = 8</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Students-passing-exam-(Sample-exam-problem)">Students passing exam (Sample exam problem)<a class="anchor-link" href="#Students-passing-exam-(Sample-exam-problem)">&#182;</a></h2><p>Let's say we have an exam question which consists of $10$ yes/no questions. 
+From past performance of similar students, a randomly chosen student will know the correct answer to $N \sim \text{binom}(10,6/10)$ questions. Furthermore, we assume that the student will guess the answer with equal probability to each question they don't know the answer to, i.e. given $N$ we define $Z \sim \text{binom}(10-N,1/2)$ as the number of correctly guessed answers. Define $Y = N + Z$, i.e., $Y$ represents the number of total correct answers.</p>
+<p>We are interested in setting a deterministic threshold $T$, i.e., we would pass a student at threshold $T$ if $Y \geq T$. Here $T \in \{0,1,2,\ldots,10\}$.</p>
+<ol>
+<li>[5p] For each threshold $T$, compute the probability that the student <em>knows</em> less than $5$ correct answers given that the student passed, i.e., $N &lt; 5$. Put the answer in <code>problem11_probabilities</code> as a list.</li>
+<li>[3p] What is the smallest value of $T$ such that if $Y \geq T$ then we are 90\% certain that $N \geq 5$?</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Hint the PMF of N is p_N(k) where p_N is</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">binom</span> <span class="k">as</span> <span class="n">binomial</span>
+<span class="n">p</span> <span class="o">=</span> <span class="mi">6</span><span class="o">/</span><span class="mi">10</span>
+<span class="n">p_N</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">k</span><span class="p">:</span> <span class="n">binomial</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="n">k</span><span class="p">)</span><span class="o">*</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="n">p</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mi">10</span><span class="o">-</span><span class="n">k</span><span class="p">))</span><span class="o">*</span><span class="p">((</span><span class="n">p</span><span class="p">)</span><span class="o">**</span><span class="n">k</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Part 1: </span>
+<span class="c1"># replace XXX to represent P(N &lt; 5) for T = [0,1,2,...,10], i.e. your answer should be a list</span>
+<span class="c1"># of length 11.</span>
+<span class="n">problem11_probabilities</span> <span class="o">=</span> <span class="p">[</span><span class="n">XXX</span><span class="p">,</span><span class="n">XXX</span><span class="p">,</span><span class="o">...</span><span class="p">,</span><span class="n">XXX</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Part 2: Give an integer between 0 and 10 which is the answer to 2.</span>
+<span class="n">problem12_T</span> <span class="o">=</span> <span class="n">XXX</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h2 id="Assignment-1,-PROBLEM-5">Assignment 1, PROBLEM 5<a class="anchor-link" href="#Assignment-1,-PROBLEM-5">&#182;</a></h2><p>Maximum Points = 8</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Concentration-of-measure-(Sample-exam-problem)">Concentration of measure (Sample exam problem)<a class="anchor-link" href="#Concentration-of-measure-(Sample-exam-problem)">&#182;</a></h2><p>As you recall, we said that concentration of measure was simply the phenomenon where we expect that the probability of a large deviation of some quantity becoming smaller as we observe more samples: [0.4 points per correct answer]</p>
+<ol>
+<li><p>Which of the following will exponentially concentrate, i.e. for some $C_1,C_2,C_3,C_4 $ 
+$$
+ P(Z - \mathbb{E}[Z] \geq \epsilon) \leq C_1 e^{-C_2 n \epsilon^2} \wedge C_3 e^{-C_4 n (\epsilon+1)} \enspace .
+$$</p>
+<ol>
+<li>The empirical variance of i.i.d. random variables with finite mean?</li>
+<li>The empirical variance of i.i.d. sub-Gaussian random variables?</li>
+<li>The empirical variance of i.i.d. sub-Exponential random variables?</li>
+<li>The empirical mean of i.i.d. sub-Gaussian random variables?</li>
+<li>The empirical mean of i.i.d. sub-Exponential random variables?</li>
+<li>The empirical mean of i.i.d. random variables with finite variance?</li>
+<li>The empirical third moment of i.i.d. random variables with finite sixth moment?</li>
+<li>The empirical fourth moment of i.i.d. sub-Gaussian random variables?</li>
+<li>The empirical mean of i.i.d. deterministic random variables?</li>
+<li>The empirical tenth moment of i.i.d. Bernoulli random variables?</li>
+</ol>
+</li>
+<li><p>Which of the above will concentrate in the weaker sense, that for some $C_1$
+$$
+ P(Z - \mathbb{E}[Z] \geq \epsilon) \leq \frac{C_1}{n \epsilon^2}?
+$$</p>
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Answers to part 1, which of the alternatives exponentially concentrate, answer as a list</span>
+<span class="c1"># i.e. [1,4,5] that is example 1, 4, and 5 concentrate</span>
+<span class="n">problem3_answer_1</span> <span class="o">=</span> <span class="p">[</span><span class="n">XXX</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Answers to part 2, which of the alternatives concentrate in the weaker sense, answer as a list</span>
+<span class="c1"># i.e. [1,4,5] that is example 1, 4, and 5 concentrate</span>
+<span class="n">problem3_answer_2</span> <span class="o">=</span> <span class="p">[</span><span class="n">XXX</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
 </div>
     </div>
   </div>
