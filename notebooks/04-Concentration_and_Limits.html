@@ -13118,7 +13118,7 @@ $$<p>We can see that this is at least true in the simulation below</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">interact</span><span class="p">,</span> <span class="n">IntSlider</span>
@@ -13127,11 +13127,11 @@ $$<p>We can see that this is at least true in the simulation below</p>
 <span class="nd">@interact</span> 
 <span class="k">def</span> <span class="nf">concentration</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">5</span><span class="p">)):</span>
     <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="mi">10000</span><span class="p">))</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="mi">10000</span><span class="p">))</span><span class="o">*</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span>
     <span class="n">means</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P(mean &gt; mu + 0.3 ) = </span><span class="si">%.5f</span><span class="s2"> &lt;= Chebychev </span><span class="si">%.5f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">means</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="o">+</span><span class="mf">0.3</span><span class="p">),(</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">0.3</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">n</span><span class="p">)))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P(mean &gt; mu + 0.3 ) = </span><span class="si">%.5f</span><span class="s2"> &lt;= Chebychev </span><span class="si">%.5f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">means</span> <span class="o">&gt;</span> <span class="mf">0.3</span><span class="p">),</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mf">0.3</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">n</span><span class="p">)))</span>
     <span class="n">discrete_histogram</span><span class="p">(</span><span class="n">means</span><span class="p">,</span><span class="n">normed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13152,13 +13152,13 @@ $$<p>We can see that this is at least true in the simulation below</p>
 
  
  
-<div id="ceb51c7b-2e28-4313-b867-d0742b4dbb92"></div>
+<div id="b9163dac-0038-416e-93da-c7e075293c10"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#ceb51c7b-2e28-4313-b867-d0742b4dbb92');
+var element = $('#b9163dac-0038-416e-93da-c7e075293c10');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "6c625f4f2eeb4d198bea7b21b40dc507", "version_major": 2, "version_minor": 0}
+{"model_id": "1266cd10c47d4a67bca32a1dee1996bb", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -13181,7 +13181,7 @@ $$
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nd">@interact</span> 
@@ -13212,13 +13212,13 @@ $$
 
  
  
-<div id="fbec5656-691d-42c8-9b91-3a22d56c0b5d"></div>
+<div id="914c84af-5865-490f-9a25-da6f18bd5d7a"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#fbec5656-691d-42c8-9b91-3a22d56c0b5d');
+var element = $('#914c84af-5865-490f-9a25-da6f18bd5d7a');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "a565c439f6e24fb18815d8c4802cc327", "version_major": 2, "version_minor": 0}
+{"model_id": "c2605d5956cb47958a134e70b0eeb5cb", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -13266,7 +13266,7 @@ $$
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">FloatSlider</span>
@@ -13282,39 +13282,10 @@ $$
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-
-
- 
- 
-<div id="61fcd805-7111-4da0-8521-5ef2794562ce"></div>
-<div class="output_subarea output_widget_view ">
-<script type="text/javascript">
-var element = $('#61fcd805-7111-4da0-8521-5ef2794562ce');
-</script>
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "3b2dab29fa814c889e15792ff716f3ce", "version_major": 2, "version_minor": 0}
-</script>
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">FloatSlider</span>
@@ -13330,35 +13301,6 @@ var element = $('#61fcd805-7111-4da0-8521-5ef2794562ce');
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-
-
- 
- 
-<div id="6a6a798e-3f43-48f8-9c59-e0b747406b43"></div>
-<div class="output_subarea output_widget_view ">
-<script type="text/javascript">
-var element = $('#6a6a798e-3f43-48f8-9c59-e0b747406b43');
-</script>
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "a461d8e4a0da464ba95865dd38c6d202", "version_major": 2, "version_minor": 0}
-</script>
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -13370,7 +13312,7 @@ var element = $('#6a6a798e-3f43-48f8-9c59-e0b747406b43');
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">Utils</span> <span class="kn">import</span> <span class="n">load_sms</span> 
@@ -13382,32 +13324,10 @@ var element = $('#6a6a798e-3f43-48f8-9c59-e0b747406b43');
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[5]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[(&#39;Go until jurong point, crazy.. Available only in bugis n great world la e buffet... Cine there got amore wat...&#39;,
-  0),
- (&#39;Ok lar... Joking wif u oni...&#39;, 0)]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">interesting_words</span><span class="o">=</span><span class="nb">set</span><span class="p">([</span><span class="s1">&#39;free&#39;</span><span class="p">,</span><span class="s1">&#39;prize&#39;</span><span class="p">])</span>
@@ -13431,7 +13351,7 @@ var element = $('#6a6a798e-3f43-48f8-9c59-e0b747406b43');
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">epsilon_bernoulli</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">alpha</span><span class="p">):</span>
@@ -13445,7 +13365,7 @@ var element = $('#6a6a798e-3f43-48f8-9c59-e0b747406b43');
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">epsilon</span> <span class="o">=</span> <span class="n">epsilon_bernoulli</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Y_obs</span><span class="p">),</span><span class="mf">0.05</span><span class="p">)</span>
@@ -13454,24 +13374,6 @@ var element = $('#6a6a798e-3f43-48f8-9c59-e0b747406b43');
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>[0.116,0.152]
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -13490,7 +13392,7 @@ $$<p>but this requires you to estimate both things on the right, and give a regi
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">Y_mid_Z1</span> <span class="o">=</span> <span class="p">[</span><span class="n">y</span> <span class="k">for</span> <span class="n">z</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">Z_obs</span><span class="p">,</span><span class="n">Y_obs</span><span class="p">)</span> <span class="k">if</span> <span class="n">z</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
@@ -13511,7 +13413,7 @@ $$<p>but this requires you to estimate both things on the right, and give a regi
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">epsilon</span> <span class="o">=</span> <span class="n">epsilon_bernoulli</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Y_mid_Z1</span><span class="p">),</span><span class="mf">0.05</span><span class="p">)</span>
@@ -13520,24 +13422,6 @@ $$<p>but this requires you to estimate both things on the right, and give a regi
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>[0.726,0.898]
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -13551,7 +13435,7 @@ $$<p>but this requires you to estimate both things on the right, and give a regi
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">bennett_epsilon</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">sigma</span><span class="p">,</span><span class="n">alpha</span><span class="p">):</span>
@@ -13571,7 +13455,7 @@ $$<p>but this requires you to estimate both things on the right, and give a regi
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">bennett_epsilon</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">300</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mf">0.05</span><span class="p">)</span>
@@ -13598,7 +13482,7 @@ $$<p>but this requires you to estimate both things on the right, and give a regi
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[20]:</div>
+    <div class="prompt output_prompt">Out[30]:</div>
 
 
 
@@ -13615,7 +13499,7 @@ $$<p>but this requires you to estimate both things on the right, and give a regi
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">FloatSlider</span>
@@ -13647,18 +13531,31 @@ $$<p>but this requires you to estimate both things on the right, and give a regi
 
  
  
-<div id="c832a9f0-87c8-4805-b5b2-98e8e191b822"></div>
+<div id="f8da8840-989a-4efa-87b4-fa2585a264c8"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#c832a9f0-87c8-4805-b5b2-98e8e191b822');
+var element = $('#f8da8840-989a-4efa-87b4-fa2585a264c8');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "304246372b1b458194d370cafa77cab1", "version_major": 2, "version_minor": 0}
+{"model_id": "8594730855a746c88fad6b96c79e2fa2", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
 </div>
 
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+    </div>
 </div>
 </div>
 
