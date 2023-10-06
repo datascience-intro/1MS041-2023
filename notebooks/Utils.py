@@ -327,6 +327,42 @@ def epsilon_bounded(n,b,alpha):
     import numpy as np
     return b*np.sqrt(-1/(2*n)*np.log((alpha)/2))
 
+def compute_confidence_interval_bounded(data,delta,min_value=None,max_value=None):
+    """
+    Uses the information P(X \in [min_value,max_value]) = 1 and uses Hoeffding to compute
+    the value of epsilon such that
+        P(X - E[X] > epsilon) < \delta
+    then uses this to construct a 1-delta confidence interval, i.e. it
+    simply computes [mean(data)-epsilon,mean(data)+epsilon]
+
+    Parameters
+    ----------
+    point_estimate : the center of the interval
+    delta : the confidence level
+    min_value : replace (point_estimate-epsilon) with max(point_estimate-epsilon,min_value)
+    max_value : replace (point_estimate-epsilon) with min(point_estimate-epsilon,max_value)
+
+    Returns
+    ----------
+    interval: a tuple containing (l_edge,r_edge) of the confidence interval
+    """
+    import numpy as np
+
+    point_estimate = np.mean(data)
+    epsilon = epsilon_bounded(len(data),max_value-min_value,delta)
+
+    if (min_value != None):
+        l_edge = np.maximum(point_estimate-epsilon,min_value)
+    else:
+        l_edge = point_estimate-epsilon
+
+    if (max_value != None):
+        r_edge = np.minimum(point_estimate+epsilon,max_value)
+    else:
+        r_edge = point_estimate+epsilon
+
+    return (l_edge,r_edge)
+
 def print_confidence_interval(point_estimate,epsilon,min_value=None,max_value=None):
     """
     Simply prints [point_estimate-epsilon,point_estimate+epsilon]

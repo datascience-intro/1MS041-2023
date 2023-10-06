@@ -13090,10 +13090,518 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Introduction-to-Data-Science"><a href="http://datascience-intro.github.io/1MS041-2023/">Introduction to Data Science</a><a class="anchor-link" href="#Introduction-to-Data-Science">&#182;</a></h1><h2 id="1MS041,-2023">1MS041, 2023<a class="anchor-link" href="#1MS041,-2023">&#182;</a></h2><p>&copy;2023 Raazesh Sainudiin, Benny Avelin. <a href="https://creativecommons.org/licenses/by/4.0/">Attribution 4.0 International     (CC BY 4.0)</a></p>
+<h1 id="Assignment-2-for-Course-1MS041">Assignment 2 for Course 1MS041<a class="anchor-link" href="#Assignment-2-for-Course-1MS041">&#182;</a></h1><p>Make         sure you pass the <code># ... Test</code> cells and
+ submit your solution notebook in the corresponding assignment on the course website. You can submit multiple times before the deadline         and your highest score will be used.</p>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h2 id="Assignment-2,-PROBLEM-1">Assignment 2, PROBLEM 1<a class="anchor-link" href="#Assignment-2,-PROBLEM-1">&#182;</a></h2><p>Maximum Points = 8</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A courier company operates a fleet of delivery trucks that make deliveries to different parts of the city. The trucks are equipped with GPS tracking devices that record the location of each truck at regular intervals. The locations are divided into three regions: downtown, the suburbs, and the countryside. The following table shows the probabilities of a truck transitioning between these regions at each time step:</p>
+<table>
+<thead><tr>
+<th>Current region</th>
+<th>Probability of transitioning to downtown</th>
+<th>Probability of transitioning to the suburbs</th>
+<th>Probability of transitioning to the countryside</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Downtown</td>
+<td>0.3</td>
+<td>0.4</td>
+<td>0.3</td>
+</tr>
+<tr>
+<td>Suburbs</td>
+<td>0.2</td>
+<td>0.5</td>
+<td>0.3</td>
+</tr>
+<tr>
+<td>Countryside</td>
+<td>0.4</td>
+<td>0.3</td>
+<td>0.3</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>If a truck is currently in the suburbs, what is the probability that it will be in the downtown region after two time steps? [1.5p]</li>
+<li>If a truck is currently in the suburbs, what is the probability that it will be in the downtown region <strong>the first time</strong> after two time steps? [1.5p]</li>
+<li>Is this Markov chain irreducible? [1.5p]</li>
+<li>What is the stationary distribution? [1.5p]</li>
+<li>Advanced question: What is the expected number of steps until the first time one enters the downtown region having started in the suburbs region. Hint: to get within 1 decimal point, it is enough to compute the probabilities for hitting times below 30. [2p]</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Part 1</span>
+
+<span class="c1"># Fill in the answer to part 1 below as a decimal number</span>
+<span class="n">problem1_p1</span> <span class="o">=</span> <span class="n">XXX</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Part 2</span>
+
+<span class="c1"># Fill in the answer to part 2 below as a decimal number</span>
+<span class="n">problem1_p2</span> <span class="o">=</span> <span class="n">XXX</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Part 3</span>
+
+<span class="c1"># Fill in the answer to part 3 below as a boolean</span>
+<span class="n">problem1_irreducible</span> <span class="o">=</span> <span class="kc">True</span><span class="o">/</span><span class="kc">False</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Part 4</span>
+
+<span class="c1"># Fill in the answer to part 4 below</span>
+<span class="c1"># the answer should be a numpy array of length 3</span>
+<span class="c1"># make sure that the entries sums to 1!</span>
+<span class="n">problem1_stationary</span> <span class="o">=</span> <span class="n">XXX</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Part 5</span>
+
+<span class="c1"># Fill in the answer to part 5 below</span>
+<span class="c1"># That is, the expected number of steps as a decimal number</span>
+<span class="n">problem1_ET</span> <span class="o">=</span> <span class="n">XXX</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h2 id="Assignment-2,-PROBLEM-2">Assignment 2, PROBLEM 2<a class="anchor-link" href="#Assignment-2,-PROBLEM-2">&#182;</a></h2><p>Maximum Points = 8</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A healthcare organization is interested in understanding the relationship between the number of visits to the doctors office and certain patient characteristics. 
+They have collected data on the number of visits (for a year) for a sample of patients and have included the following variables</p>
+<ul>
+<li>ofp : number of physician office visits</li>
+<li>ofnp : number of nonphysician office visits</li>
+<li>opp : number of physician outpatient visits</li>
+<li>opnp : number of nonphysician outpatient visits</li>
+<li>emr : number of emergency room visits</li>
+<li>hosp : number of hospitalizations</li>
+<li>exclhlth : the person is of excellent health (self-perceived)</li>
+<li>poorhealth : the person is of poor health (self-perceived)</li>
+<li>numchron : number of chronic conditions</li>
+<li>adldiff : the person has a condition that limits activities of daily living ?</li>
+<li>noreast : the person is from the north east region</li>
+<li>midwest : the person is from the midwest region</li>
+<li>west : the person is from the west region</li>
+<li>age : age in years (divided by 10)</li>
+<li>male : is the person male ?</li>
+<li>married : is the person married ?</li>
+<li>school : number of years of education</li>
+<li>faminc : family income in 10000$</li>
+<li>employed : is the person employed ?</li>
+<li>privins : is the person covered by private health insurance?</li>
+<li>medicaid : is the person covered by medicaid ?</li>
+</ul>
+<p>Decide which patient features are resonable to use to predict the target "number of physician office visits". Hint: should we really use the "ofnp" etc variables?</p>
+<p>Since the target variable is counts, a reasonable loss function is to consider the target variable as Poisson distributed where the parameter follows $\lambda = \exp(\alpha \cdot x + \beta)$ where $\alpha$ is a vector (slope) and $\beta$ is a number (intercept). That is, the parameter is the exponential of a linear function. The reason we chose this as our parameter, is that it is always positive which is when the Poisson distribution is defined. To be specific we make the following assumption about our conditional density of $Y \mid X$,
+$$
+    f_{Y \mid X} (y,x) = \frac{\lambda^{y} e^{-\lambda}}{y !}, \quad \lambda(x) = \exp(\alpha \cdot x + \beta).
+$$</p>
+<p>Recall from the lecture notes, (4.2) that in this case we should consider the log-loss (entropy) and that according to (4.2.1 Maximum Likelihood and regression) we can consider the conditional log-likelihood. Follow the steps of Example 1 and Example 2 in section (4.2) to derive the loss that needs to be minimized.</p>
+<p>Hint: when taking the log of the conditional density you will find that the term that contains the $y!$ does not depend on $\lambda$ and as such does not depend on $\alpha,\beta$, it can thus be discarded. This will be essential due to numerical issues with factorials.</p>
+<p>Instructions:</p>
+<ol>
+<li>Load the file <code>data/visits_clean.csv</code>, follow the instructions in the code cell of how this should happen [1.5p]</li>
+<li>Create the <code>problem2_X</code> and the <code>problem2_y</code> as numpy arrays with <code>problem2_X</code> being the features and <code>problem2_y</code> being the target. Do the standard train-test split with 80% training data and 20% testing data. Store these in the variables defined in the cells. [1.5p]</li>
+<li>Implement $loss$ inside the class <code>PoissonRegression</code> by writing down the loss to be minimized, I have provided a formula for the $\lambda$ that you can use. [1.5p]</li>
+<li>Now use the <code>PoissonRegression</code> class to train a Poisson regression model on the training data. [1.5p]</li>
+<li>Compute the mean absolute error of your prediction on the test set and use Hoeffdings inequality to produce a 95\% confidence interval for the mean absolute error. We can make the assumption that the error is bounded by 70 for simplicity. [2p]</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Part 1</span>
+
+<span class="c1"># As in assignment 1 we will load the header into header and data into data</span>
+<span class="c1"># this time you will have to parse the data such that each data entry is a float</span>
+<span class="c1"># and that the problem2_data is a numpy array of shape (n_samples,n_columns)</span>
+<span class="c1"># where n_columns is the number of columns and should have the same length as</span>
+<span class="c1"># the list of strings header. n_samples is how many rows of data we had.</span>
+<span class="c1"># If you cannot find the file, check the starting package as it should be updated</span>
+<span class="c1"># if not, go to the github repo and pull it</span>
+
+<span class="c1"># The autograder does not accept pandas as a solution to this problem.</span>
+<span class="c1"># data/visits_clean.csv</span>
+<span class="n">problem2_header</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">]</span> <span class="c1">#List of strings</span>
+<span class="n">problem2_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">()</span> <span class="c1">#A numpy array of shape n_samples n_columns</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Part 2</span>
+
+<span class="c1"># Fill in your X and y below</span>
+<span class="n">problem2_X</span> <span class="o">=</span> <span class="n">XXX</span>
+<span class="n">problem2_y</span> <span class="o">=</span> <span class="n">XXX</span>
+
+<span class="c1"># Split the data into train and randomly using for instance</span>
+<span class="c1"># np.random.shuffle indices and indexing the first 80% as the train data</span>
+<span class="c1"># keep the train size as 0.8 rounded up to the nearest integer sample</span>
+<span class="n">problem2_X_train</span><span class="p">,</span> <span class="n">problem2_X_test</span><span class="p">,</span> <span class="n">problem2_y_train</span><span class="p">,</span> <span class="n">problem2_y_test</span> <span class="o">=</span> <span class="n">XXX</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Part 3</span>
+
+<span class="c1"># Fill in the function loss below</span>
+
+<span class="k">class</span> <span class="nc">PoissonRegression</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">coeffs</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">result</span> <span class="o">=</span> <span class="kc">None</span>
+    
+    <span class="c1"># define the objective/cost/loss function we want to minimise</span>
+    <span class="k">def</span> <span class="nf">loss</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">coeffs</span><span class="p">):</span>
+        <span class="c1"># The parameter lambda for the given X and the proposed values </span>
+        <span class="c1"># of the coefficients, here coeff[:-1] represent alpha </span>
+        <span class="c1"># and coeff[-1] represent beta</span>
+        <span class="n">lam</span> <span class="o">=</span> <span class="n">XXX</span>
+
+        <span class="c1"># use the Y variable that is available here to define </span>
+        <span class="c1"># the loss function, return the value of the loss for </span>
+        <span class="c1"># this Y and for this parameter lam defined above</span>
+        <span class="k">return</span> <span class="n">XXX</span>
+
+    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">):</span>
+        <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+        <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">optimize</span>
+
+        <span class="c1">#Use the loss above together with an optimization method from scipy</span>
+        <span class="c1">#to find the coefficients of the model</span>
+        <span class="c1">#this is prepared for you below</span>
+        <span class="n">opt_loss</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">coeffs</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">loss</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">coeffs</span><span class="p">)</span>
+        <span class="n">initial_arguments</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># initial guess as 0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">result</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">opt_loss</span><span class="p">,</span> <span class="n">initial_arguments</span><span class="p">,</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;cg&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">coeffs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">x</span>
+    
+    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">X</span><span class="p">):</span>
+        <span class="c1">#Use the trained model to predict Y</span>
+        <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coeffs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">coeffs</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">coeffs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Part 4</span>
+
+<span class="c1"># Initialize your PoissonRegression model</span>
+<span class="n">problem2_model</span> <span class="o">=</span> <span class="n">XXX</span>
+
+<span class="c1"># Fit your initialized model on the training data</span>
+
+
+<span class="c1"># This is to make sure that everything went well, </span>
+<span class="c1"># check that success is True</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">problem2_model</span><span class="o">.</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Part 5</span>
+
+<span class="c1"># Put the computed mean absolute error in the variable below</span>
+<span class="n">problem2_metric</span> <span class="o">=</span> <span class="n">MAE</span>
+<span class="c1"># Put a confidence interval in the variable below by using Hoeffdings inequality using the bounds</span>
+<span class="c1"># a = 0, b=70 (roughly 5 days between visits as minimum)</span>
+<span class="c1"># the variable should contain a tuple representing the confidence interval of the form (l_edge,r_edge)</span>
+<span class="n">problem2_interval</span> <span class="o">=</span> <span class="n">XXX</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h2 id="Assignment-2,-PROBLEM-3">Assignment 2, PROBLEM 3<a class="anchor-link" href="#Assignment-2,-PROBLEM-3">&#182;</a></h2><p>Maximum Points = 8</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Random-variable-generation-and-transformation">Random variable generation and transformation<a class="anchor-link" href="#Random-variable-generation-and-transformation">&#182;</a></h2><p>The purpose of this problem is to show that you can implement your own sampler, this will be built in the following three steps:</p>
+<ol>
+<li>[2p] Implement a Linear Congruential Generator where you tested out a good combination (a large $M$ with $a,b$ satisfying the Hull-Dobell (Thm 6.8)) of parameters. Follow the instructions in the code block.</li>
+<li>[2p] Using a generator construct random numbers from the uniform $[0,1]$ distribution.</li>
+<li>[4p] Using a uniform $[0,1]$ random generator, generate samples from </li>
+</ol>
+$$p_0(x) = \frac{\pi}{2}|\sin(2\pi x)|, \quad x \in [0,1] \enspace .$$<p>Using the <strong>Accept-Reject</strong> sampler (<strong>Algorithm 1</strong> in TFDS notes) with sampling density given by the uniform $[0,1]$ distribution.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">problem3_LCG</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">seed</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A linear congruential generator that generates pseudo random numbers according to size.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    -------------</span>
+<span class="sd">    size : an integer denoting how many samples should be produced</span>
+<span class="sd">    seed : the starting point of the LCG, i.e. u0 in the notes.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------------</span>
+<span class="sd">    out : a list of the pseudo random numbers</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">XXX</span>
+    
+    <span class="k">return</span> <span class="n">XXX</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">problem3_uniform</span><span class="p">(</span><span class="n">generator</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">period</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Takes a generator and produces samples from the uniform [0,1] distribution according</span>
+<span class="sd">    to size.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    -------------</span>
+<span class="sd">    generator : a function of type generator(size,seed) and produces the same result as problem1_LCG, i.e. pseudo random numbers in the range {0,1,...,period-1}</span>
+<span class="sd">    period : the period of the generator</span>
+<span class="sd">    seed : the seed to be used in the generator provided</span>
+<span class="sd">    size : an integer denoting how many samples should be produced</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    --------------</span>
+<span class="sd">    out : a list of the uniform pseudo random numbers</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">XXX</span>
+    
+    <span class="k">return</span> <span class="n">XXX</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">problem3_accept_reject</span><span class="p">(</span><span class="n">uniformGenerator</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_iterations</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Takes a generator that produces uniform pseudo random [0,1] numbers </span>
+<span class="sd">    and produces samples from (pi/2)*abs(sin(x*2*pi)) using an Accept-Reject</span>
+<span class="sd">    sampler with the uniform distribution as the proposal distribution.</span>
+<span class="sd">    Runs n_iterations</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    -------------</span>
+<span class="sd">    generator : a function of the type generator(size,seed) that produces uniform pseudo random</span>
+<span class="sd">    numbers from [0,1]</span>
+<span class="sd">    seed : the seed to be used in the generator provided</span>
+<span class="sd">    n_iterations : an integer denoting how many attempts should be made in the accept-reject sampler</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    --------------</span>
+<span class="sd">    out : a list of the pseudo random numbers with the specified distribution</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">XXX</span>
+    
+    <span class="k">return</span> <span class="n">XXX</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h4 id="Local-Test-for-Assignment-2,-PROBLEM-3">Local Test for Assignment 2, PROBLEM 3<a class="anchor-link" href="#Local-Test-for-Assignment-2,-PROBLEM-3">&#182;</a></h4><p>Evaluate cell below to make sure your answer is valid.                             You <strong>should not</strong> modify anything in the cell below when evaluating it to do a local test of                             your solution.
+You may need to include and evaluate code snippets from lecture notebooks in cells above to make the local test work correctly sometimes (see error messages for clues). This is meant to help you become efficient at recalling materials covered in lectures that relate to this problem. Such local tests will generally not be available in the exam.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># If you managed to solve all three parts you can test the following code to see if it runs</span>
+<span class="c1"># you have to change the period to match your LCG though, this is marked as XXX.</span>
+<span class="c1"># It is a very good idea to check these things using the histogram function in sagemath</span>
+<span class="c1"># try with a larger number of samples, up to 10000 should run</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;LCG output: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">problem3_LCG</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">seed</span> <span class="o">=</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="n">period</span> <span class="o">=</span> <span class="n">XXX</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Uniform sampler </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">problem3_uniform</span><span class="p">(</span><span class="n">generator</span><span class="o">=</span><span class="n">problem3_LCG</span><span class="p">,</span> <span class="n">period</span> <span class="o">=</span> <span class="n">period</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="n">uniform_sampler</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">size</span><span class="p">,</span><span class="n">seed</span><span class="p">:</span> <span class="n">problem3_uniform</span><span class="p">(</span><span class="n">generator</span><span class="o">=</span><span class="n">problem3_LCG</span><span class="p">,</span> <span class="n">period</span> <span class="o">=</span> <span class="n">period</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accept-Reject sampler </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">problem3_accept_reject</span><span class="p">(</span><span class="n">uniformGenerator</span> <span class="o">=</span> <span class="n">uniform_sampler</span><span class="p">,</span><span class="n">n_iterations</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">seed</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># If however you did not manage to implement either part 1 or part 2 but still want to check part 3, you can run the code below</span>
+
+<span class="k">def</span> <span class="nf">testUniformGenerator</span><span class="p">(</span><span class="n">size</span><span class="p">,</span><span class="n">seed</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">random</span>
+    <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">size</span><span class="p">)]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accept-Reject sampler </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">problem3_accept_reject</span><span class="p">(</span><span class="n">uniformGenerator</span><span class="o">=</span><span class="n">testUniformGenerator</span><span class="p">,</span> <span class="n">n_iterations</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
 </div>
     </div>
   </div>
