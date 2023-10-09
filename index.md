@@ -25,6 +25,7 @@ These notebooks are numbered according to which lecture they coincide with and w
 06. [06-Fundamentals_of_estimation](06-Fundamentals_of_estimation.md)
 07. [07-Estimation_Likelihood](07-Estimation_Likelihood.md)
 07. [07-Optimization](07-Optimization.md)
+07. [07-StandardError](07-StandardError.md)
 08. [08-PRNG](08-PRNG.md)
 09. [09-Markov_chains](09-Markov_chains.md)
 10. [10-Pattern_Recognition](10-Pattern_Recognition.md)
