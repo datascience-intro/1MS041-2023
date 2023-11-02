@@ -26,7 +26,7 @@ def load_sms():
 
     return lines
 
-def discrete_histogram(data,normed=False,alpha=1):
+def discrete_histogram(data,normed=False,alpha=1,force_display = True):
     import numpy as np
     bins, counts = np.unique(data,return_counts=True)
     width = np.min(np.diff(bins))/4
@@ -35,6 +35,10 @@ def discrete_histogram(data,normed=False,alpha=1):
         plt.bar(bins,counts/np.sum(counts),width=width,alpha=alpha)
     else:
         plt.bar(bins,counts,width=width,alpha=alpha)
+    
+    if (force_display):
+        plt.show()
+
 
 def plotEMF(numRelFreqPairs, force_display = True):
     import matplotlib.pyplot as plt
