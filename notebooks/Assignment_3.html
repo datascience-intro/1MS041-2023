@@ -13090,10 +13090,268 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Introduction-to-Data-Science"><a href="http://datascience-intro.github.io/1MS041-2023/">Introduction to Data Science</a><a class="anchor-link" href="#Introduction-to-Data-Science">&#182;</a></h1><h2 id="1MS041,-2023">1MS041, 2023<a class="anchor-link" href="#1MS041,-2023">&#182;</a></h2><p>&copy;2023 Raazesh Sainudiin, Benny Avelin. <a href="https://creativecommons.org/licenses/by/4.0/">Attribution 4.0 International     (CC BY 4.0)</a></p>
+<h1 id="Assignment-3-for-Course-1MS041">Assignment 3 for Course 1MS041<a class="anchor-link" href="#Assignment-3-for-Course-1MS041">&#182;</a></h1><p>Make         sure you pass the <code># ... Test</code> cells and
+ submit your solution notebook in the corresponding assignment on the course website. You can submit multiple times before the deadline         and your highest score will be used.</p>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h2 id="Assignment-3,-PROBLEM-1">Assignment 3, PROBLEM 1<a class="anchor-link" href="#Assignment-3,-PROBLEM-1">&#182;</a></h2><p>Maximum Points = 8</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Consider the data <code>X</code> and <code>y</code>, in the cell below. <code>X</code> denotes $20$ points in $\mathbb{R}^2$ and <code>y</code> corresponds to the labels for these points, i.e. it is a classification problem.</p>
+<ol>
+<li>[3p] Implement the function <code>perceptron</code> by filling in <code>XXX</code>.</li>
+<li><p>[2p] Use your implemented <code>perceptron</code> function to compute a vector (numpy array) $\hat w$ with shape <code>(3,1)</code> such that 
+$$
+ (\hat w \cdot \hat x_i) l_i &gt; 0, \quad \forall i=1,\ldots,20
+$$
+put your answer in <code>hat_w</code> below (the last dimension is the bias dimension, i.e. the added dimension we used to derive the perceptron)</p>
+</li>
+<li><p>[3p] Use the vector $\hat w$ that you just found and compute $r = \max_i |x_i|$ (put your result in <code>r</code>), finally use this to give an upper bound to the number of iterations needed for the perceptron algorithm to converge on this dataset, see chapter 8 in the ITDS notes. Put the result in <code>iteration_bound</code>.</p>
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.14774693918368506</span><span class="p">,</span><span class="mf">0.8537253157278155</span><span class="p">],[</span><span class="o">-</span><span class="mf">0.1755517430286779</span><span class="p">,</span><span class="mf">0.8979710703337818</span><span class="p">],[</span><span class="mf">0.5227216475286975</span><span class="p">,</span><span class="mf">0.7448281947022451</span><span class="p">],[</span><span class="o">-</span><span class="mf">0.5071170511153492</span><span class="p">,</span><span class="mf">0.8002027400836075</span><span class="p">],[</span><span class="o">-</span><span class="mf">0.39436968212400453</span><span class="p">,</span><span class="mf">1.0177689414422981</span><span class="p">],[</span><span class="o">-</span><span class="mf">0.3983065780966649</span><span class="p">,</span><span class="mf">1.0443663197782966</span><span class="p">],[</span><span class="o">-</span><span class="mf">0.08652771617599643</span><span class="p">,</span><span class="mf">0.48036820824519255</span><span class="p">],[</span><span class="mf">0.15352541170101042</span><span class="p">,</span><span class="mf">0.6820807981911706</span><span class="p">],[</span><span class="o">-</span><span class="mf">0.3303348532791869</span><span class="p">,</span><span class="mf">1.120673883903539</span><span class="p">],[</span><span class="o">-</span><span class="mf">0.2656220857139274</span><span class="p">,</span><span class="mf">0.8526638282828739</span><span class="p">],[</span><span class="mf">0.7259603693529442</span><span class="p">,</span><span class="mf">0.25428467532034965</span><span class="p">],[</span><span class="mf">0.4577253912481767</span><span class="p">,</span><span class="o">-</span><span class="mf">0.2358809079980879</span><span class="p">],[</span><span class="mf">0.9722462145222105</span><span class="p">,</span><span class="mf">0.13128550836973255</span><span class="p">],[</span><span class="mf">0.4089349951770505</span><span class="p">,</span><span class="o">-</span><span class="mf">0.09503914544452634</span><span class="p">],[</span><span class="mf">0.9718156747909192</span><span class="p">,</span><span class="mf">0.3524307824261209</span><span class="p">],[</span><span class="mf">1.2009353774940565</span><span class="p">,</span><span class="o">-</span><span class="mf">0.25004126389987974</span><span class="p">],[</span><span class="mf">1.271791635779178</span><span class="p">,</span><span class="o">-</span><span class="mf">0.07571928320750206</span><span class="p">],[</span><span class="mf">0.36784476124502913</span><span class="p">,</span><span class="o">-</span><span class="mf">0.23743021661715671</span><span class="p">],[</span><span class="mf">0.8918396050420891</span><span class="p">,</span><span class="o">-</span><span class="mf">0.1029336332277948</span><span class="p">],[</span><span class="mf">0.4501578013678095</span><span class="p">,</span><span class="o">-</span><span class="mf">0.13188266835015783</span><span class="p">]])</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span><span class="o">-</span><span class="mf">1.0</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Part 1</span>
+<span class="k">def</span> <span class="nf">perceptron</span><span class="p">(</span><span class="n">X_in</span><span class="p">,</span><span class="n">labels</span><span class="p">,</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Runs the perceptron algorithm on X_in, labels, and does a maximum of max_iter iterations&#39;&#39;&#39;</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">XXX</span>
+    <span class="c1"># Dont forget the addition of the extra dimension to encode the</span>
+    <span class="c1"># bias in the perceptron, i.e. adding the extra dimension with value 1</span>
+    
+    <span class="k">return</span> <span class="n">w</span> <span class="c1">#Make sure that w has the shape described in the problem</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Part 1</span>
+<span class="n">hat_w</span> <span class="o">=</span> <span class="n">XXX</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Part 2</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">XXX</span>
+
+<span class="n">iteration_bound</span> <span class="o">=</span> <span class="n">XXX</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h2 id="Assignment-3,-PROBLEM-2">Assignment 3, PROBLEM 2<a class="anchor-link" href="#Assignment-3,-PROBLEM-2">&#182;</a></h2><p>Maximum Points = 8</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For this problem you will need the <a href="https://pandas.pydata.org/">pandas</a> package and the <a href="https://scikit-learn.org/stable/">sklearn</a> package. If you download the updated <code>data</code> folder from the course website you will find a file called <code>indoor_train.csv</code>, this file includes a bunch of positions in (X,Y,Z) and also a location number. The idea is to assign a room number (Location) to the coordinates (X,Y,Z).</p>
+<ol>
+<li>[2p] Take the data in the file <code>indoor_train.csv</code> and load it using pandas into a dataframe <code>df_train</code></li>
+<li>[3p] From this dataframe <code>df_train</code>, create two numpy arrays, one <code>Xtrain</code> and <code>Ytrain</code>, they should have sizes <code>(1154,3)</code> and <code>(1154,)</code> respectively. Their <code>dtype</code> should be <code>float64</code> and <code>int64</code> respectively.</li>
+<li>[3p] Train a Support Vector Classifier, <code>sklearn.svc.SVC</code>, on <code>Xtrain, Ytrain</code> with <code>kernel='linear'</code> and name the trained model <code>svc_train</code>.</li>
+</ol>
+<p>To mimic how <a href="https://www.kaggle.com/">kaggle</a> works, the Autograder has access to a hidden test-set and will test your fitted model.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_train</span> <span class="o">=</span> <span class="n">XXX</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Xtrain</span> <span class="o">=</span> <span class="n">XXX</span>
+<span class="n">Ytrain</span> <span class="o">=</span> <span class="n">XXX</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">svc_train</span> <span class="o">=</span> <span class="n">XXX</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h2 id="Assignment-3,-PROBLEM-3">Assignment 3, PROBLEM 3<a class="anchor-link" href="#Assignment-3,-PROBLEM-3">&#182;</a></h2><p>Maximum Points = 8</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="SMS-spam-filtering-[8p]">SMS spam filtering [8p]<a class="anchor-link" href="#SMS-spam-filtering-[8p]">&#182;</a></h2><p>In the following problem we will explore SMS spam texts. The dataset is the <code>SMS Spam Collection Dataset</code> and we have provided for you a way to load the data. If you run the appropriate cell below, the result will be in the <code>spam_no_spam</code> variable. The result is a <code>list</code> of <code>tuples</code> with the first position in the tuple being the SMS text and the second being a flag <code>0 = not spam</code> and <code>1 = spam</code>.</p>
+<ol>
+<li><p>[3p] Let $X$ be the random variable that represents each SMS text (an entry in the list), and let $Y$ represent whether text is spam or not i.e. $Y \in \{0,1\}$. Thus $\mathbb{P}(Y = 1)$ is the probability that we get a spam. The goal is to estimate:
+$$
+ \mathbb{P}(Y = 1 | \text{"free" or "prize" is in } X) \enspace .
+$$ 
+That is, the probability that the SMS is spam given that "free" or "prize" occurs in the SMS. (This is precision). Hint: it is good to remove the upper/lower case of words so that we can also find "Free" and "Prize"; this can be done with <code>text.lower()</code> if <code>text</code> a string.</p>
+</li>
+<li><p>[3p] Estimate the probability that the word "free" or "prize" is in the text given that it is spam. (This is recall) I.e. estimate
+$$
+ \mathbb{P}(\text{"free" or "prize" is in } X \mid Y = 1) \enspace .
+$$</p>
+</li>
+<li>[2p] Provide a "90\%" interval of confidence around the true probability from <strong>part 1</strong>. I.e. use the Hoeffding inequality to obtain for your estimate $\hat P$. Find $l &gt; 0$ such that the following holds:
+$$
+ \mathbb{P}(\hat P - l \leq \mathbb{E}[\hat P] \leq \hat P + l) \geq 0.9 \enspace .
+$$</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Run this cell to get the SMS text data</span>
+<span class="k">def</span> <span class="nf">load_sms</span><span class="p">():</span>
+    <span class="kn">import</span> <span class="nn">csv</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">hamspam</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;ham&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;spam&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data/spam.csv&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin-1&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="n">header</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">reader</span><span class="p">)</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="p">[(</span><span class="n">line</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">hamspam</span><span class="p">[</span><span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">]</span>
+        
+    <span class="k">return</span> <span class="n">lines</span>
+<span class="n">spam_no_spam</span> <span class="o">=</span> <span class="n">load_sms</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># fill in the estimate for part 1 here (should be a number between 0 and 1)</span>
+<span class="n">problem4_hatP</span> <span class="o">=</span> <span class="n">XXX</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># fill in the estimate for part 2 here (should be a number between 0 and 1)</span>
+<span class="n">problem4_hatP2</span> <span class="o">=</span> <span class="n">XXX</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># fill in the calculated l from part 3 here</span>
+<span class="n">problem4_l</span> <span class="o">=</span> <span class="n">XXX</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
 </div>
     </div>
   </div>
