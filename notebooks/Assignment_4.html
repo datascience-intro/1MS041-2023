@@ -13090,17 +13090,246 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Introduction-to-Data-Science"><a href="http://datascience-intro.github.io/1MS041-2023/">Introduction to Data Science</a><a class="anchor-link" href="#Introduction-to-Data-Science">&#182;</a></h1><h2 id="1MS041,-2023">1MS041, 2023<a class="anchor-link" href="#1MS041,-2023">&#182;</a></h2><p>&copy;2023 Raazesh Sainudiin, Benny Avelin. <a href="https://creativecommons.org/licenses/by/4.0/">Attribution 4.0 International     (CC BY 4.0)</a></p>
+<h1 id="Assignment-4-for-Course-1MS041">Assignment 4 for Course 1MS041<a class="anchor-link" href="#Assignment-4-for-Course-1MS041">&#182;</a></h1><p>Make         sure you pass the <code># ... Test</code> cells and
+ submit your solution notebook in the corresponding assignment on the course website. You can submit multiple times before the deadline         and your highest score will be used.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h2 id="Assignment-4,-PROBLEM-1">Assignment 4, PROBLEM 1<a class="anchor-link" href="#Assignment-4,-PROBLEM-1">&#182;</a></h2><p>Maximum Points = 24</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This time the assignment only consists of one problem, but we will do a more comprehensive analysis instead.</p>
+<p>Consider the dataset <code>mammography.mat</code> that you can download from <a href="http://odds.cs.stonybrook.edu/mammography-dataset/">http://odds.cs.stonybrook.edu/mammography-dataset/</a>. Below you can find the code to load this file into <code>X</code> and <code>Y</code>, you just need to put the file in your <code>data</code> folder. During mammography the doctor would be looking for something called <code>calcification</code>, which is calcium deposits in the breast tissue and is used as an indicator of cancer. In this dataset the <code>X</code> corresponds to some measurements, there are 6 features. The <code>Y</code> is a 0-1 label where 1 represents calcification and 0 does not.</p>
+<ol>
+<li>[3p] Split the data into three parts, train/test/validation where train is 60% of the data, test is 15% and validation is 25% of the data. Do not do this randomly, I have prepared a shuffling with a fixed seed, this way I can make sure that we all did the same splits. That is [train,test,validation] is the splitting layout.</li>
+<li>[4p] Train a machine learning model on the training data (you are free to choose it yourself). Hint: you could always try <code>LogisticRegression</code>, but for it to work well you would need <code>StandardScaler</code> and put everything in a <code>Pipeline</code>.</li>
+<li>[3p] Use the classification report from <code>Utils</code> and compute the intervals for precision-recall etc on the test set with <code>union_bound correction</code> with 95% confidence.</li>
+<li>[3p] You are interested in minimizing the average cost of your classifier, but first we must define it:<ul>
+<li>If someone is calcified but classified as not, we say it costs 30 <strong>(this is the worst scenario)</strong> </li>
+<li>If someone is not calcified but classified as calcified, we say it costs 5 <strong>(this probably only costs extra investigation)</strong></li>
+<li>If someone is calcified but classified as calcified, costs 0 <strong>(We did the right thing, no cost)</strong></li>
+<li>If someone is not calcified but classified as not, costs 0 <strong>(We did the right thing, no cost)</strong>.</li>
+</ul>
+</li>
+</ol>
+<p>complete filling the function <code>cost</code> to compute the cost of a prediction model under a certain prediction threshold (recall our precision recall lecture and the <code>predict_proba</code> function from trained models). What would be the cost of having a model that always classifies someone as not calcified on the test set?</p>
+<ol>
+<li>[4p] Now, we wish to select the threshold of our classifier that minimizes the cost, we do that by checking say 100 evenly spaced proposal thresholds between 0 and 1, and use our testing data to compute the cost.</li>
+<li>[4p] With your newly computed threshold value, compute the cost of putting this model in production by computing the cost using the validation data. Also provide a confidence interval of the cost using Hoeffdings inequality with a 95% confidence.</li>
+<li>[3p] Let $t$ be the threshold you found and $f$ the model you fitted, if we define the random variable
+$$
+ C = 30(1-1_{f(X)\geq t})Y+5(1-Y)1_{f(X) \geq t}
+$$
+then $C$ denotes the cost of a randomly chosen patient. In the above we are estimating $\mathbb{E}[C]$ using the empirical mean. However, since the number of calcifications in the population is fairly small and our classifier probably has a fairly high precision for the $0$ class, then $C$ should have fairly small variance. Compute the empirical variance of $C$ on the validation set. What would be the confidence interval if we used Bennett's inequality instead of Hoeffding in point 6 but with the computed empirical variance as our guess for the variance?</li>
+</ol>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">scipy.io</span> <span class="k">as</span> <span class="nn">so</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">so</span><span class="o">.</span><span class="n">loadmat</span><span class="p">(</span><span class="s1">&#39;data/mammography.mat&#39;</span><span class="p">)</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">shuffle_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]))</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">shuffle_index</span><span class="p">)</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">][</span><span class="n">shuffle_index</span><span class="p">,:]</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">][</span><span class="n">shuffle_index</span><span class="p">,:]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Part 1</span>
+
+<span class="c1"># Split the X,Y into three parts, make sure that the sizes are</span>
+<span class="c1"># (6709, 6), (1677, 6), (2797, 6), (6709,), (1677,), (2797,)</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">X_valid</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">,</span> <span class="n">Y_test</span><span class="p">,</span> <span class="n">Y_valid</span> <span class="o">=</span> <span class="n">XXX</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Part 2</span>
+<span class="c1"># Use X_train,Y_train to train a model from sklearn. Make sure it has the predict_proba function</span>
+<span class="c1"># for instance LogisticRegression</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">XXX</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Part 3</span>
+
+<span class="c1"># Compute precision and recall on the test set using </span>
+<span class="kn">from</span> <span class="nn">Utils</span> <span class="kn">import</span> <span class="n">classification_report_interval</span>
+
+<span class="c1"># Each precision and recall should be a tuple, for instance you can write</span>
+<span class="c1"># precision0 = (0.9,0.95)</span>
+
+<span class="n">precision0</span> <span class="o">=</span> <span class="n">XXX</span>
+<span class="n">recall0</span> <span class="o">=</span> <span class="n">XXX</span>
+<span class="n">precision1</span> <span class="o">=</span> <span class="n">XXX</span>
+<span class="n">recall1</span> <span class="o">=</span> <span class="n">XXX</span>
+
+<span class="c1"># The code below will check that you supply the proper type</span>
+<span class="k">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">precision0</span><span class="p">)</span> <span class="o">==</span> <span class="nb">tuple</span><span class="p">)</span>
+<span class="k">assert</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">precision0</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>
+<span class="k">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">recall0</span><span class="p">)</span> <span class="o">==</span> <span class="nb">tuple</span><span class="p">)</span>
+<span class="k">assert</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">recall0</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>
+<span class="k">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">precision1</span><span class="p">)</span> <span class="o">==</span> <span class="nb">tuple</span><span class="p">)</span>
+<span class="k">assert</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">precision1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>
+<span class="k">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">recall1</span><span class="p">)</span> <span class="o">==</span> <span class="nb">tuple</span><span class="p">)</span>
+<span class="k">assert</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">recall1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Part 4</span>
+
+<span class="k">def</span> <span class="nf">cost</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="n">threshold</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">):</span>
+    <span class="n">pred_proba</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)[:,</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">predictions</span> <span class="o">=</span> <span class="p">(</span><span class="n">pred_proba</span> <span class="o">&gt;=</span> <span class="n">threshold</span><span class="p">)</span><span class="o">*</span><span class="mi">1</span>
+    
+    <span class="c1"># Fill in what is missing to compute the cost and return it</span>
+    <span class="c1"># Note that we are interested in average cost (cost per person)</span>
+    
+    <span class="k">return</span> <span class="n">XXX</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Part 4</span>
+
+<span class="c1"># Fill in the naive cost of the model that would classify all as non-calcified on the test set</span>
+
+<span class="n">naive_cost</span> <span class="o">=</span> <span class="n">XXX</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Part 5</span>
+
+<span class="n">optimal_threshold</span> <span class="o">=</span> <span class="n">XXX</span>
+<span class="n">cost_at_optimal_threshold</span> <span class="o">=</span> <span class="n">XXX</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Part 6</span>
+
+<span class="n">cost_at_optimal_threshold_validation</span> <span class="o">=</span> <span class="n">XXX</span>
+<span class="c1"># Report the cost interval as a tuple cost_interval = (a,b)</span>
+<span class="n">cost_interval</span> <span class="o">=</span> <span class="n">XXX</span>
+
+<span class="c1"># The code below will tell you if you filled in the intervals correctly</span>
+<span class="k">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">cost_interval</span><span class="p">)</span> <span class="o">==</span> <span class="nb">tuple</span><span class="p">)</span>
+<span class="k">assert</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cost_interval</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Part 7</span>
+
+<span class="n">variance_of_C</span> <span class="o">=</span> <span class="n">XXX</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Part 7</span>
+
+<span class="c1"># A 95% confidence interval of the random variable C using Bennett&#39;s inequality</span>
+<span class="n">interval_of_C</span> <span class="o">=</span> <span class="n">XXX</span>
+
+<span class="k">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">interval_of_C</span><span class="p">)</span> <span class="o">==</span> <span class="nb">tuple</span><span class="p">)</span>
+<span class="k">assert</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">interval_of_C</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
 
     </div>
